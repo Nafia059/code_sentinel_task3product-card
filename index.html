@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Card</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for stars -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="card">
+    <img src="http://www.pngmart.com/files/1/Purple-Beats-By-Dr.-Dre-Headphones-PNG.png" alt="Earphones">
+    <h2>Earphones</h2>
+    <p>Compact wireless earphones with clear sound and long battery life</p>
+    <h3>$40.00</h3>
+    <div class="stars" id="star-rating">
+      <i class="fa fa-star" data-index="1"></i>
+      <i class="fa fa-star" data-index="2"></i>
+      <i class="fa fa-star" data-index="3"></i>
+      <i class="fa fa-star" data-index="4"></i>
+      <i class="fa fa-star" data-index="5"></i>
+    </div>
+    <button>Buy Now</button>
+  </div>
+
+  <script>
+    const stars = document.querySelectorAll('#star-rating .fa-star');
+    let currentRating = 0;
+
+    stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+        currentRating = index + 1;
+        updateStars(currentRating);
+      });
+
+      star.addEventListener('mouseover', () => {
+        updateStars(index + 1);
+      });
+
+      star.addEventListener('mouseout', () => {
+        updateStars(currentRating);
+      });
+    });
+
+    function updateStars(rating) {
+      stars.forEach((star, i) => {
+        if (i < rating) {
+          star.classList.add('checked');
+        } else {
+          star.classList.remove('checked');
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
